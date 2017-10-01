@@ -1,0 +1,65 @@
+# Common folders
+.bower/
+.yarn/
+.tscache/
+.svn/
+.idea/
+.vs/
+.tmp/
+_ReSharper*/
+[Tt]est[Rr]esult*/
+Logs/
+node_modules/
+[Pp]ackages/
+npm-cache/
+
+# artifact folders
+x64/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+Artifacts/
+deployment/
+Logs/
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+packtemp/
+
+# MSTest test Results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# whildcards
+*.suo
+*.user
+!*.[Uu]ser/
+*.orig
+*.sln.docstates
+*.svn
+*.sass-cache
+*.bak
+*.DotSettings
+*.patch
+*.VisualState.xml
+*.log
+*.tmp
+*.tmp.txt
+*.metaproj
+*.[Rr]e[Ss]harper
+[Bb]uild[Ll]og.*
+*.nupkg
+
+# common files
+yarn.lock
+UpgradeLog.htm
+languages.json
+desktop.ini
+TestResult.xml
+.yarn
+Thumbs.db
+launchSettings.json
+.DS_Store
+similarweb-light/Website/bower_components/*
+*.nugetreferenceswitcher
