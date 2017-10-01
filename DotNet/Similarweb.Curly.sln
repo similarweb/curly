@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Curly", "Curly\Curly.csproj", "{159CFF41-5925-4800-B13B-6E04E3552CEF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Curly.Tests", "Curly.Tests\Curly.Tests.csproj", "{428B356D-B146-4AF7-A83D-ABCF99CC7667}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{159CFF41-5925-4800-B13B-6E04E3552CEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{159CFF41-5925-4800-B13B-6E04E3552CEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{159CFF41-5925-4800-B13B-6E04E3552CEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{159CFF41-5925-4800-B13B-6E04E3552CEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{428B356D-B146-4AF7-A83D-ABCF99CC7667}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{428B356D-B146-4AF7-A83D-ABCF99CC7667}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{428B356D-B146-4AF7-A83D-ABCF99CC7667}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{428B356D-B146-4AF7-A83D-ABCF99CC7667}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8AA57CB9-F8DF-469F-9C1E-6F3F82A87A94}
+	EndGlobalSection
+EndGlobal
