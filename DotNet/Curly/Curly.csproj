@@ -4,7 +4,7 @@
     <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
     <Company>Similarweb</Company>
     <Authors>vladsp</Authors>
-    <Version>0.1.2-pre</Version>
+    <Version>0.1.2</Version>
     <Description>Curly is string based template language with support for infinite nesting and dynamic function binding</Description>
     <Copyright>Copyright (c) 2017 SimilarWeb</Copyright>
     <PackageLicenseUrl>https://github.com/similarweb/curly/blob/master/LICENSE</PackageLicenseUrl>
