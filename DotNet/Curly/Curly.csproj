@@ -4,7 +4,7 @@
     <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
     <Company>Similarweb</Company>
     <Authors>vladsp</Authors>
-    <Version>0.1.2</Version>
+    <Version>0.1.4</Version>
     <Description>Curly is string based template language with support for infinite nesting and dynamic function binding</Description>
     <Copyright>Copyright (c) 2017 SimilarWeb</Copyright>
     <PackageLicenseUrl>https://github.com/similarweb/curly/blob/master/LICENSE</PackageLicenseUrl>
@@ -22,4 +22,8 @@
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
   </ItemGroup>
 
+  <Target Name="LocalInstall" AfterTargets="Pack">
+    <Exec Command="$(MSBuildProjectDirectory)\..\.nuget/nuget.exe delete -Source C:\LocalArtifactory $(PackageId) $(PackageVersion) -NonInteractive" ContinueOnError="True"></Exec>
+    <Exec Command="$(MSBuildProjectDirectory)\..\.nuget/nuget.exe add -Source C:\LocalArtifactory $(PackageOutputPath)$(PackageId).$(PackageVersion).nupkg"></Exec>
+  </Target>
 </Project>

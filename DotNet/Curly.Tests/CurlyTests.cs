@@ -15,8 +15,9 @@ namespace Curly.Test
         [TestCase("{all:{any:True;False;false,True};{all:a;a;a,a};{all:True;True;True,True},True}")]
         public void BoolTrueTests(string testcase)
         {
-            Assert.True(CurlyDsl.Evaluate(testcase,false));
-            Assert.AreEqual(CurlyDsl.StringValue(testcase), "True");
+            Assert.True(CurlyDsl.TryEvaluate(testcase, out bool result));
+            Assert.True(result);
+            Assert.AreEqual(CurlyDsl.ExpandOne(testcase), "True");
         }
 
         [Test]
@@ -28,8 +29,9 @@ namespace Curly.Test
         [TestCase("{all:{or:ue,fa};{all:a;a;a,a};{all:never;ever;again,again};{any:b;c;d,y},True}")]
         public void BoolFalseTests(string testcase)
         {
-            Assert.False(CurlyDsl.Evaluate(testcase, false));
-            Assert.AreEqual(CurlyDsl.StringValue(testcase), "False");
+            Assert.True(CurlyDsl.TryEvaluate(testcase, out bool result));
+            Assert.False(result);
+            Assert.AreEqual(CurlyDsl.ExpandOne(testcase), "False");
         }
     }
 }

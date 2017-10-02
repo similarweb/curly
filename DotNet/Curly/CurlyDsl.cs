@@ -350,6 +350,11 @@ namespace Curly
                 jsonRegex.IsMatch(str) ? JsonConvert.DeserializeObject<Dictionary<string, string>>(str) : null;
         }
 
+        public static string Expand(string value, bool recursive = false)
+        {
+            return recursive ? ExpandRecursive(value) : ExpandOne(value);
+        }
+
         public static string ExpandRecursive(string value)
         {
             while (true)
@@ -377,7 +382,7 @@ namespace Curly
             return PatMaRegex.Replace(value, matchEvaluator);
         }
 
-        public static object Typify(string str, bool forceList = false)
+        public static object Parse(string str, bool forceList = false)
         {
             if (str == null)
                 return null;
@@ -391,11 +396,11 @@ namespace Curly
             return result.Any() ? result.ToArrayOfType(result.First().GetType()) : null;
         }
 
-        public static bool TryEvaluate<T>(string value, out T result)
+        public static bool TryEvaluate<T>(string value, out T result, bool recursive=false)
         {
             try
             {
-                var res = Typify(ExpandOne(value));
+                var res = Evaluate(value,recursive);
                 result = (T)System.Convert.ChangeType(res, typeof(T));
                 return true;
             }
@@ -407,20 +412,24 @@ namespace Curly
             }
         }
 
-        public static T Evaluate<T>(string value, T @default)
+        public static object Evaluate(string value,bool recursive = false)
         {
-            return TryEvaluate(value, out T res) ? res : @default;
+            return Parse(Expand(value,recursive));
         }
 
-        public static string StringValue(string value)
-        {
-            return TryEvaluate(value, out string res) ? res : value;
-        }
+        //public static T Evaluate<T>(string value, T @default)
+        //{
+        //    return TryEvaluate(value, out T res) ? res : @default;
+        //}
 
-        public static object Evaluate(string value)
-        {
-            return Typify(ExpandOne(value));
-        }
+        //public static object Evaluate(string value,bool recursive = false)
+        //{
+        //    return Parse(Expand(value,recursive));
+        //}
+        //public static string EvaluateToString(string value)
+        //{
+        //    return TryEvaluate(value, out string res) ? res : value;
+        //}
 
         internal static object ResolveCore(Type t)
         {
