@@ -35,10 +35,18 @@ namespace Curly
         public static Func<Type, object> Resolve = type => Activator.CreateInstance(type);
         public static Action<string, Exception> ErrorLogger = (mes, ex) => Console.WriteLine($"{mes}:{ex?.Message}");
 
-        public static Func<IReadOnlyList<Assembly>> AssemblyResolver = () => AppDomain
-            .CurrentDomain
-            .GetAssemblies();
-            //.Where(a => a.FullName.ToLowerInvariant().StartsWith("similarweb")).ToList();
+        public static Func<IReadOnlyList<Assembly>> AssemblyResolver = () =>
+        {
+            Assembly current = Assembly.GetExecutingAssembly();
+            return AppDomain
+                .CurrentDomain
+                .GetAssemblies()
+                .SelectMany(a => a.GetReferencedAssemblies(), (a, r) => new {a, r})
+                .Where((a) => a.r.FullName == current.FullName || a.a == current)
+                .Select(a=>a.a)
+                .Distinct()
+                .ToList();
+        };
 
         private static Dictionary<string, InternalCurlyMethod> _newResolvers;
         private static IList<CurlyConverter> _newConverters;
