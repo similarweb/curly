@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Curly.Helpers
 {
-    public static class Extensions
+    internal static class Extensions
     {
         public static void ForEach<T>(this IEnumerable<T> ie, Action<T> action)
         {
