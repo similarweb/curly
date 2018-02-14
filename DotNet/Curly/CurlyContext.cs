@@ -25,7 +25,7 @@ namespace Curly
 #else
                 var cont = Context.Value;
                 if (cont == null)
-                    Context.Value = new SimpleContainer();
+                    Context.Value = cont = new SimpleContainer();
 #endif
                 return cont;
             }
