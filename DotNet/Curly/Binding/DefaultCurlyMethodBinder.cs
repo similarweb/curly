@@ -18,12 +18,12 @@ namespace Curly.Binding
             if (methodInfo.GetParameters().Length < 1 ||
                 !typeof(string).IsAssignableFrom(methodInfo.GetParameters().First().ParameterType))
             {
-                Console.WriteLine($"Curly converter binding failed: wrong parameter count or parameter types in method marked by CurlyInterpreter");
+                Console.WriteLine("Curly converter binding failed: wrong parameter count or parameter types in method marked by CurlyInterpreter");
                 return null;
             }
 
-            IEnumerable<ConverterParameterProvider> invocators = 
-                methodInfo.GetParameters().Take(1).Select<ParameterInfo, ConverterParameterProvider>(a=> (value) => value)
+            IEnumerable<ConverterParameterProvider> invocators =
+                methodInfo.GetParameters().Take(1).Select<ParameterInfo, ConverterParameterProvider>(a => (value) => value)
                 .Concat(methodInfo.GetParameters().Skip(1).Select<ParameterInfo, ConverterParameterProvider>(a => (x) => CurlyDsl.ResolveCore(a.ParameterType)));
 
             return (value) =>
@@ -39,8 +39,7 @@ namespace Curly.Binding
                         catch (Exception e)
                         {
                             Console.WriteLine(
-                                $"Curly interpreter {methodInfo.Name} failed:V={value} calling converter",
-                                e.InnerException ?? e);
+                                $"Curly interpreter {methodInfo.Name} failed:V={value ?? "null"} calling converter.{ e.InnerException ?? e}");
                             return null;
                         }
                     }).ToArray());
@@ -48,7 +47,7 @@ namespace Curly.Binding
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine($"Curly interpreter {methodInfo.Name} failed:V={value}", e.InnerException ?? e);
+                    Console.WriteLine($"Curly interpreter {methodInfo.Name} failed:V={value ?? "none"}, E={e.InnerException ?? e}");
                     return null;
                 }
             };
@@ -162,8 +161,7 @@ namespace Curly.Binding
                         catch (Exception e)
                         {
                             Console.WriteLine(
-                                $"Dsl method {methodInfo.Name} failed:V={value},P={param} calling provider",
-                                e.InnerException ?? e);
+                                $"Dsl method {methodInfo.Name} failed:V={value ?? "null"},P={param ?? "null"} calling provider. E={e.InnerException ?? e}");
                             return null;
                         }
                     }).ToArray());
@@ -171,7 +169,7 @@ namespace Curly.Binding
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine($"Dsl method {methodInfo.Name} failed:V={value},P={param}", e.InnerException ?? e);
+                    Console.WriteLine($"Dsl method {methodInfo.Name} failed:V={value ?? "null"},P={param ?? "null"},E={e.InnerException ?? e}");
                     return null;
                 }
             };
@@ -195,7 +193,7 @@ namespace Curly.Binding
             }
             catch (Exception e)
             {
-                Console.WriteLine($"converting {o} to type {to.FullName}", e);
+                Console.WriteLine($"Error converting {o} to type {to.FullName}. E={e}");
                 return null;
             }
         }
