@@ -183,7 +183,7 @@ namespace Curly.Binding
                 return CurlyDsl.ParseDateOrInvalid(o, DateTime.MinValue);
             }
 
-            if (CurlyDsl.Unlimited.Equals(o))
+            if (CurlyDsl.Unlimited.Equals(o, StringComparison.OrdinalIgnoreCase))
             {
                 src = Int32.MaxValue;
             }
