@@ -305,7 +305,7 @@ namespace Curly
         [DslMethod("equals")]
         public static string Equals([FromParam(0)] string first, [FromParam(1)] string second)
         {
-            return string.Equals(first.ToLower(), second.ToLower()).ToString();
+            return string.Equals(first, second, StringComparison.OrdinalIgnoreCase).ToString();
         }
         
         /// <summary>
