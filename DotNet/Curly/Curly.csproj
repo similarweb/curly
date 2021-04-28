@@ -31,8 +31,8 @@
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
   </ItemGroup>
 
-  <Target Name="LocalInstall" AfterTargets="Pack">
+<!--   <Target Name="LocalInstall" AfterTargets="Pack">
     <Exec Command="$(MSBuildProjectDirectory)\..\.nuget/nuget.exe delete -Source C:\LocalArtifactory $(PackageId) $(PackageVersion) -NonInteractive" ContinueOnError="True"></Exec>
     <Exec Command="$(MSBuildProjectDirectory)\..\.nuget/nuget.exe add -Source C:\LocalArtifactory $(PackageOutputPath)$(PackageId).$(PackageVersion).nupkg"></Exec>
-  </Target>
+  </Target> -->
 </Project>
