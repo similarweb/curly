@@ -305,6 +305,18 @@ namespace Curly
         [DslMethod("equals")]
         public static string Equals([FromParam(0)] string first, [FromParam(1)] string second)
         {
+            return string.Equals(first, second, StringComparison.OrdinalIgnoreCase).ToString();
+        }
+        
+        /// <summary>
+        /// Compares 2 operands, case sensitive
+        /// </summary>
+        /// <param name="first"></param>
+        /// <param name="second"></param>
+        /// <returns></returns>
+        [DslMethod("equalscase")]
+        public static string EqualsCase([FromParam(0)] string first, [FromParam(1)] string second)
+        {
             return string.Equals(first, second).ToString();
         }
 
